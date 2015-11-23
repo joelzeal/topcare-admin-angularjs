@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="476d5a17b88540108c50dcd06618fd27" Name="Diagram1">
+        <EntityTypeShape EntityType="TopcareNetworkModel.AddonService" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.AddonServiceType" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.CompanyProfile" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.DBSSTaff" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.MemberAttendance" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.Member" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.MemberSubscriptionsPaid" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.Nationality" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.Notification" Width="1.5" PointX="11" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.NotificationStaff" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.NotificationType" Width="1.5" PointX="8.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.PaymentMethod" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.PreScheduleFollowup" Width="1.5" PointX="8.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.PreScheduleFollowupDetail" Width="1.5" PointX="11" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.ProgrameTimeTemplate" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.RSVPStatu" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.ScheduleDetail" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.Schedule" Width="1.5" PointX="3.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.SubscriptionYear" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.TeamMember" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.TransportArrangementStatu" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.TransportationOption" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.vwMemberAttendance" Width="1.5" PointX="9.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.vwPreScheduleFollowup" Width="1.5" PointX="11.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.vwScheduleAttendanceForReport" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TopcareNetworkModel.vwSubscriptionSummary" Width="1.5" PointX="5.75" PointY="14.75" IsExpanded="true" />
+        <AssociationConnector Association="TopcareNetworkModel.FK_AddonServices_AddonServiceTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TopcareNetworkModel.FK_AddonServices_DBSSTaff" ManuallyRouted="false" />
+        <AssociationConnector Association="TopcareNetworkModel.FK_AddonServices_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="TopcareNetworkModel.FK_MemberAttendance_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="TopcareNetworkModel.FK_MemberAttendance_Schedules" ManuallyRouted="false" />
+        <AssociationConnector Association="TopcareNetworkModel.FK_MemberSubscriptionsPaid_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="TopcareNetworkModel.FK_Notifications_NotificationTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="TopcareNetworkModel.FK_PreScheduleFollowupDetails_PreScheduleFollowup" ManuallyRouted="false" />
+        <AssociationConnector Association="TopcareNetworkModel.FK_ScheduleDetails_Schedules" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

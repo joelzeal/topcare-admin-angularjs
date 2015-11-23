@@ -1,0 +1,1535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TopcareNetworkModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AddonServices">
+          <Key>
+            <PropertyRef Name="AddonServiceID" />
+          </Key>
+          <Property Name="AddonServiceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddonServiceTypeId" Type="int" />
+          <Property Name="ServiceDate" Type="datetime" />
+          <Property Name="StaffID" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemberId" Type="int" />
+          <Property Name="Comments" Type="ntext" />
+        </EntityType>
+        <EntityType Name="AddonServiceTypes">
+          <Key>
+            <PropertyRef Name="AddonServiceTypeId" />
+          </Key>
+          <Property Name="AddonServiceTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="datetime" />
+          <Property Name="ModifiedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CompanyProfile">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="500" />
+          <Property Name="SmtpServer" Type="nvarchar" MaxLength="50" />
+          <Property Name="smtpPort" Type="int" />
+          <Property Name="SmtpEmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="SmtpPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscriptionFeeToBeCharged" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DefaultEmailMessage" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="DBSSTaff">
+          <Key>
+            <PropertyRef Name="DBSStaffID" />
+          </Key>
+          <Property Name="DBSStaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="IssueDate" Type="date" />
+          <Property Name="DBSNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="90" />
+        </EntityType>
+        <EntityType Name="MemberAttendance">
+          <Key>
+            <PropertyRef Name="MemberAttendanceID" />
+          </Key>
+          <Property Name="MemberAttendanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScheduleID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="HasAttended" Type="bit" />
+          <Property Name="HasPaid" Type="bit" />
+          <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentRecievedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentMethodID" Type="int" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsFeeWaived" Type="bit" />
+        </EntityType>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="Postcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="NationalityID" Type="int" />
+          <Property Name="DietaryRequirements" Type="nvarchar" MaxLength="300" />
+          <Property Name="NextOfKin_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="NextOfKin_Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="NextOfKin_Postcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="NextOfKin_PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber1" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber2" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber3" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="500" />
+          <Property Name="MemberTransportationID" Type="nvarchar" MaxLength="100" />
+          <Property Name="TransportationOptionID" Type="int" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MemberSubscriptionsPaid">
+          <Key>
+            <PropertyRef Name="MemberSubscriptionPaidID" />
+          </Key>
+          <Property Name="MemberSubscriptionPaidID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PaymentRecievedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsOpen" Type="bit" />
+          <Property Name="ExpiryDate" Type="date" />
+          <Property Name="IsWaived" Type="bit" />
+        </EntityType>
+        <EntityType Name="Nationalities">
+          <Key>
+            <PropertyRef Name="NationalityID" />
+          </Key>
+          <Property Name="NationalityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Decription" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Notifications">
+          <Key>
+            <PropertyRef Name="NotificationID" />
+          </Key>
+          <Property Name="NotificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NotificationTypeID" Type="int" />
+          <Property Name="IsVisibility" Type="bit" />
+          <Property Name="NotificationYear" Type="int" />
+        </EntityType>
+        <EntityType Name="NotificationStaff">
+          <Key>
+            <PropertyRef Name="NotificationID" />
+          </Key>
+          <Property Name="NotificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="90" />
+          <Property Name="IsDisplayed" Type="bit" />
+          <Property Name="IsCancelled" Type="bit" />
+          <Property Name="IsEmailNotification" Type="bit" />
+          <Property Name="IsDisplayOnScreenNotification" Type="bit" />
+          <Property Name="IsMobileTextNotification" Type="bit" />
+          <Property Name="DisplayedDate" Type="datetime" />
+          <Property Name="CancelledDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NotificationTypes">
+          <Key>
+            <PropertyRef Name="NotificationTypeID" />
+          </Key>
+          <Property Name="NotificationTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PaymentMethods">
+          <Key>
+            <PropertyRef Name="PaymentMethodID" />
+          </Key>
+          <Property Name="PaymentMethodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PreScheduleFollowup">
+          <Key>
+            <PropertyRef Name="PreScheduleFollowupID" />
+          </Key>
+          <Property Name="PreScheduleFollowupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FollowupDoneBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="ScheduleID" Type="int" />
+        </EntityType>
+        <EntityType Name="PreScheduleFollowupDetails">
+          <Key>
+            <PropertyRef Name="PreScheduleFollowupDetailID" />
+          </Key>
+          <Property Name="PreScheduleFollowupDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransportArrangementStatusID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="RSVPStatusID" Type="int" />
+          <Property Name="PickOffTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="DropOffTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="PreScheduleFollowupID" Type="int" />
+          <Property Name="IsTransportBooked" Type="bit" />
+        </EntityType>
+        <EntityType Name="ProgrameTimeTemplate">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartTime" Type="time" Precision="1" />
+          <Property Name="EndTime" Type="time" Precision="1" />
+          <Property Name="Template" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="RSVPStatus">
+          <Key>
+            <PropertyRef Name="RSVPStatusID" />
+          </Key>
+          <Property Name="RSVPStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="ScheduleDetails">
+          <Key>
+            <PropertyRef Name="ScheduleDetailID" />
+          </Key>
+          <Property Name="ScheduleDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item" Type="nvarchar" MaxLength="500" />
+          <Property Name="ScheduleID" Type="int" />
+          <Property Name="StartTime" Type="time" Precision="7" />
+          <Property Name="EndTime" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Schedules">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOfEvent" Type="date" />
+          <Property Name="MealsToBeServed" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProgramTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentExpected" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Team" Type="nvarchar" MaxLength="200" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="500" />
+          <Property Name="NotesNew" Type="ntext" />
+          <Property Name="MealsToBeServed_New" Type="ntext" />
+        </EntityType>
+        <EntityType Name="SubscriptionYears">
+          <Key>
+            <PropertyRef Name="SubscriptionYearID" />
+          </Key>
+          <Property Name="SubscriptionYearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="5" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="YearStartDate" Type="date" />
+          <Property Name="YearEndDate" Type="date" />
+        </EntityType>
+        <EntityType Name="TeamMembers">
+          <Key>
+            <PropertyRef Name="TeamMemberID" />
+          </Key>
+          <Property Name="TeamMemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamMemberFirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="TeamMemberLastName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TransportArrangementStatus">
+          <Key>
+            <PropertyRef Name="TransportArrangementStatusID" />
+          </Key>
+          <Property Name="TransportArrangementStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="TransportationOptions">
+          <Key>
+            <PropertyRef Name="TransportationOptionID" />
+          </Key>
+          <Property Name="TransportationOptionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="MustHaveMembershipID" Type="bit" />
+          <Property Name="NumberToCall" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TopcareNetwork.dbo.vwAttendanceListForPrint' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwAttendanceListForPrint">
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsSubscriptionPaid" Type="bit" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TopcareNetwork.dbo.vwMemberAttendance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwMemberAttendance">
+          <Key>
+            <PropertyRef Name="MemberAttendanceID" />
+            <PropertyRef Name="IsSubscriptionPaid" />
+          </Key>
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemberAttendanceID" Type="int" Nullable="false" />
+          <Property Name="ScheduleID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="HasAttended" Type="bit" />
+          <Property Name="HasPaid" Type="bit" />
+          <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentRecievedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentMethodID" Type="int" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsFeeWaived" Type="bit" />
+          <Property Name="IsSubscriptionPaid" Type="int" Nullable="false" />
+          <Property Name="DateOfEvent" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TopcareNetwork.dbo.vwPreScheduleFollowup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwPreScheduleFollowup">
+          <Key>
+            <PropertyRef Name="MemberID" />
+            <PropertyRef Name="PreScheduleFollowupID" />
+            <PropertyRef Name="PreScheduleFollowupDetailID" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="101" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="PreScheduleFollowupID" Type="int" Nullable="false" />
+          <Property Name="RSVPStatusID" Type="int" />
+          <Property Name="PickOffTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="DropOffTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="Comments" Type="nvarchar(max)" />
+          <Property Name="IsTransportBooked" Type="bit" />
+          <Property Name="PreScheduleFollowupDetailID" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber1" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber2" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber3" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemberTransportationID" Type="nvarchar" MaxLength="100" />
+          <Property Name="RSVPStatusDescription" Type="nvarchar" MaxLength="70" />
+          <Property Name="TransportationOptionsDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="ScheduleDateOfEvent" Type="date" />
+          <Property Name="ScheduleID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'TopcareNetwork.dbo.vwRSVPSummary' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vwRSVPSummary">
+          <Property Name="Description" Type="nvarchar" MaxLength="70" />
+          <Property Name="AttendanceCount" Type="int" />
+          <Property Name="ScheduleID" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TopcareNetwork.dbo.vwScheduleAttendanceForReport' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwScheduleAttendanceForReport">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScheduleID" Type="int" />
+          <Property Name="HasAttended" Type="bit" />
+          <Property Name="MemberID" Type="int" Nullable="false" />
+          <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'TopcareNetwork.dbo.vwSubscriptionSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwSubscriptionSummary">
+          <Key>
+            <PropertyRef Name="MemberAttendanceID" />
+            <PropertyRef Name="IsSubscriptionPaid" />
+          </Key>
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemberAttendanceID" Type="int" Nullable="false" />
+          <Property Name="ScheduleID" Type="int" />
+          <Property Name="MemberID" Type="int" />
+          <Property Name="HasAttended" Type="bit" />
+          <Property Name="HasPaid" Type="bit" />
+          <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentRecievedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentMethodID" Type="int" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="Narration" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsFeeWaived" Type="bit" />
+          <Property Name="IsSubscriptionPaid" Type="int" Nullable="false" />
+          <Property Name="SubscriptionAmountPaid" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DateOfEvent" Type="date" />
+          <Property Name="Team" Type="nvarchar" MaxLength="200" />
+          <Property Name="weeklyPayment" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="weeklyPaymentDesc" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK_AddonServices_AddonServiceTypes">
+          <End Role="AddonServiceTypes" Type="Self.AddonServiceTypes" Multiplicity="0..1" />
+          <End Role="AddonServices" Type="Self.AddonServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddonServiceTypes">
+              <PropertyRef Name="AddonServiceTypeId" />
+            </Principal>
+            <Dependent Role="AddonServices">
+              <PropertyRef Name="AddonServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddonServices_DBSSTaff">
+          <End Role="DBSSTaff" Type="Self.DBSSTaff" Multiplicity="0..1" />
+          <End Role="AddonServices" Type="Self.AddonServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBSSTaff">
+              <PropertyRef Name="DBSStaffID" />
+            </Principal>
+            <Dependent Role="AddonServices">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddonServices_Members">
+          <End Role="Members" Type="Self.Members" Multiplicity="0..1" />
+          <End Role="AddonServices" Type="Self.AddonServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="AddonServices">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberAttendance_Members">
+          <End Role="Members" Type="Self.Members" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberAttendance" Type="Self.MemberAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="MemberAttendance">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberAttendance_Schedules">
+          <End Role="Schedules" Type="Self.Schedules" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberAttendance" Type="Self.MemberAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedules">
+              <PropertyRef Name="ScheduleID" />
+            </Principal>
+            <Dependent Role="MemberAttendance">
+              <PropertyRef Name="ScheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberSubscriptionsPaid_Members">
+          <End Role="Members" Type="Self.Members" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberSubscriptionsPaid" Type="Self.MemberSubscriptionsPaid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="MemberSubscriptionsPaid">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_NotificationTypes">
+          <End Role="NotificationTypes" Type="Self.NotificationTypes" Multiplicity="0..1" />
+          <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationTypes">
+              <PropertyRef Name="NotificationTypeID" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="NotificationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreScheduleFollowupDetails_PreScheduleFollowup">
+          <End Role="PreScheduleFollowup" Type="Self.PreScheduleFollowup" Multiplicity="0..1" />
+          <End Role="PreScheduleFollowupDetails" Type="Self.PreScheduleFollowupDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreScheduleFollowup">
+              <PropertyRef Name="PreScheduleFollowupID" />
+            </Principal>
+            <Dependent Role="PreScheduleFollowupDetails">
+              <PropertyRef Name="PreScheduleFollowupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduleDetails_Schedules">
+          <End Role="Schedules" Type="Self.Schedules" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ScheduleDetails" Type="Self.ScheduleDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedules">
+              <PropertyRef Name="ScheduleID" />
+            </Principal>
+            <Dependent Role="ScheduleDetails">
+              <PropertyRef Name="ScheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TopcareNetworkModelStoreContainer">
+          <EntitySet Name="AddonServices" EntityType="Self.AddonServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddonServiceTypes" EntityType="Self.AddonServiceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyProfile" EntityType="Self.CompanyProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DBSSTaff" EntityType="Self.DBSSTaff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberAttendance" EntityType="Self.MemberAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberSubscriptionsPaid" EntityType="Self.MemberSubscriptionsPaid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nationalities" EntityType="Self.Nationalities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationStaff" EntityType="Self.NotificationStaff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotificationTypes" EntityType="Self.NotificationTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreScheduleFollowup" EntityType="Self.PreScheduleFollowup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreScheduleFollowupDetails" EntityType="Self.PreScheduleFollowupDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgrameTimeTemplate" EntityType="Self.ProgrameTimeTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RSVPStatus" EntityType="Self.RSVPStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScheduleDetails" EntityType="Self.ScheduleDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubscriptionYears" EntityType="Self.SubscriptionYears" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamMembers" EntityType="Self.TeamMembers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransportArrangementStatus" EntityType="Self.TransportArrangementStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransportationOptions" EntityType="Self.TransportationOptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwMemberAttendance" EntityType="Self.vwMemberAttendance" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vwMemberAttendance].[FirstName] AS [FirstName], 
+[vwMemberAttendance].[LastName] AS [LastName], 
+[vwMemberAttendance].[MemberAttendanceID] AS [MemberAttendanceID], 
+[vwMemberAttendance].[ScheduleID] AS [ScheduleID], 
+[vwMemberAttendance].[MemberID] AS [MemberID], 
+[vwMemberAttendance].[HasAttended] AS [HasAttended], 
+[vwMemberAttendance].[HasPaid] AS [HasPaid], 
+[vwMemberAttendance].[AmountPaid] AS [AmountPaid], 
+[vwMemberAttendance].[PaymentRecievedBy] AS [PaymentRecievedBy], 
+[vwMemberAttendance].[PaymentMethodID] AS [PaymentMethodID], 
+[vwMemberAttendance].[PaymentDate] AS [PaymentDate], 
+[vwMemberAttendance].[Narration] AS [Narration], 
+[vwMemberAttendance].[IsFeeWaived] AS [IsFeeWaived], 
+[vwMemberAttendance].[IsSubscriptionPaid] AS [IsSubscriptionPaid], 
+[vwMemberAttendance].[DateOfEvent] AS [DateOfEvent]
+FROM [dbo].[vwMemberAttendance] AS [vwMemberAttendance]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwPreScheduleFollowup" EntityType="Self.vwPreScheduleFollowup" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vwPreScheduleFollowup].[Name] AS [Name], 
+[vwPreScheduleFollowup].[MemberID] AS [MemberID], 
+[vwPreScheduleFollowup].[PreScheduleFollowupID] AS [PreScheduleFollowupID], 
+[vwPreScheduleFollowup].[RSVPStatusID] AS [RSVPStatusID], 
+[vwPreScheduleFollowup].[PickOffTime] AS [PickOffTime], 
+[vwPreScheduleFollowup].[DropOffTime] AS [DropOffTime], 
+[vwPreScheduleFollowup].[Comments] AS [Comments], 
+[vwPreScheduleFollowup].[IsTransportBooked] AS [IsTransportBooked], 
+[vwPreScheduleFollowup].[PreScheduleFollowupDetailID] AS [PreScheduleFollowupDetailID], 
+[vwPreScheduleFollowup].[PhoneNumber1] AS [PhoneNumber1], 
+[vwPreScheduleFollowup].[PhoneNumber2] AS [PhoneNumber2], 
+[vwPreScheduleFollowup].[PhoneNumber3] AS [PhoneNumber3], 
+[vwPreScheduleFollowup].[MemberTransportationID] AS [MemberTransportationID], 
+[vwPreScheduleFollowup].[RSVPStatusDescription] AS [RSVPStatusDescription], 
+[vwPreScheduleFollowup].[TransportationOptionsDescription] AS [TransportationOptionsDescription], 
+[vwPreScheduleFollowup].[ScheduleDateOfEvent] AS [ScheduleDateOfEvent], 
+[vwPreScheduleFollowup].[ScheduleID] AS [ScheduleID]
+FROM [dbo].[vwPreScheduleFollowup] AS [vwPreScheduleFollowup]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwScheduleAttendanceForReport" EntityType="Self.vwScheduleAttendanceForReport" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vwScheduleAttendanceForReport].[FirstName] AS [FirstName], 
+[vwScheduleAttendanceForReport].[LastName] AS [LastName], 
+[vwScheduleAttendanceForReport].[ScheduleID] AS [ScheduleID], 
+[vwScheduleAttendanceForReport].[HasAttended] AS [HasAttended], 
+[vwScheduleAttendanceForReport].[MemberID] AS [MemberID], 
+[vwScheduleAttendanceForReport].[AmountPaid] AS [AmountPaid]
+FROM [dbo].[vwScheduleAttendanceForReport] AS [vwScheduleAttendanceForReport]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwSubscriptionSummary" EntityType="Self.vwSubscriptionSummary" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[vwSubscriptionSummary].[FirstName] AS [FirstName], 
+[vwSubscriptionSummary].[LastName] AS [LastName], 
+[vwSubscriptionSummary].[MemberAttendanceID] AS [MemberAttendanceID], 
+[vwSubscriptionSummary].[ScheduleID] AS [ScheduleID], 
+[vwSubscriptionSummary].[MemberID] AS [MemberID], 
+[vwSubscriptionSummary].[HasAttended] AS [HasAttended], 
+[vwSubscriptionSummary].[HasPaid] AS [HasPaid], 
+[vwSubscriptionSummary].[AmountPaid] AS [AmountPaid], 
+[vwSubscriptionSummary].[PaymentRecievedBy] AS [PaymentRecievedBy], 
+[vwSubscriptionSummary].[PaymentMethodID] AS [PaymentMethodID], 
+[vwSubscriptionSummary].[PaymentDate] AS [PaymentDate], 
+[vwSubscriptionSummary].[Narration] AS [Narration], 
+[vwSubscriptionSummary].[IsFeeWaived] AS [IsFeeWaived], 
+[vwSubscriptionSummary].[IsSubscriptionPaid] AS [IsSubscriptionPaid], 
+[vwSubscriptionSummary].[SubscriptionAmountPaid] AS [SubscriptionAmountPaid], 
+[vwSubscriptionSummary].[DateOfEvent] AS [DateOfEvent], 
+[vwSubscriptionSummary].[Team] AS [Team], 
+[vwSubscriptionSummary].[weeklyPayment] AS [weeklyPayment], 
+[vwSubscriptionSummary].[weeklyPaymentDesc] AS [weeklyPaymentDesc]
+FROM [dbo].[vwSubscriptionSummary] AS [vwSubscriptionSummary]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_AddonServices_AddonServiceTypes" Association="Self.FK_AddonServices_AddonServiceTypes">
+            <End Role="AddonServiceTypes" EntitySet="AddonServiceTypes" />
+            <End Role="AddonServices" EntitySet="AddonServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddonServices_DBSSTaff" Association="Self.FK_AddonServices_DBSSTaff">
+            <End Role="DBSSTaff" EntitySet="DBSSTaff" />
+            <End Role="AddonServices" EntitySet="AddonServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddonServices_Members" Association="Self.FK_AddonServices_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="AddonServices" EntitySet="AddonServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberAttendance_Members" Association="Self.FK_MemberAttendance_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="MemberAttendance" EntitySet="MemberAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberAttendance_Schedules" Association="Self.FK_MemberAttendance_Schedules">
+            <End Role="Schedules" EntitySet="Schedules" />
+            <End Role="MemberAttendance" EntitySet="MemberAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberSubscriptionsPaid_Members" Association="Self.FK_MemberSubscriptionsPaid_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="MemberSubscriptionsPaid" EntitySet="MemberSubscriptionsPaid" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_NotificationTypes" Association="Self.FK_Notifications_NotificationTypes">
+            <End Role="NotificationTypes" EntitySet="NotificationTypes" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreScheduleFollowupDetails_PreScheduleFollowup" Association="Self.FK_PreScheduleFollowupDetails_PreScheduleFollowup">
+            <End Role="PreScheduleFollowup" EntitySet="PreScheduleFollowup" />
+            <End Role="PreScheduleFollowupDetails" EntitySet="PreScheduleFollowupDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleDetails_Schedules" Association="Self.FK_ScheduleDetails_Schedules">
+            <End Role="Schedules" EntitySet="Schedules" />
+            <End Role="ScheduleDetails" EntitySet="ScheduleDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TopcareNetworkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AddonService">
+          <Key>
+            <PropertyRef Name="AddonServiceID" />
+          </Key>
+          <Property Name="AddonServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddonServiceTypeId" Type="Int32" />
+          <Property Name="ServiceDate" Type="DateTime" Precision="3" />
+          <Property Name="StaffID" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemberId" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AddonServiceType" Relationship="Self.FK_AddonServices_AddonServiceTypes" FromRole="AddonServices" ToRole="AddonServiceTypes" />
+          <NavigationProperty Name="DBSSTaff" Relationship="Self.FK_AddonServices_DBSSTaff" FromRole="AddonServices" ToRole="DBSSTaff" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_AddonServices_Members" FromRole="AddonServices" ToRole="Members" />
+        </EntityType>
+        <EntityType Name="AddonServiceType">
+          <Key>
+            <PropertyRef Name="AddonServiceTypeId" />
+          </Key>
+          <Property Name="AddonServiceTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AddonServices" Relationship="Self.FK_AddonServices_AddonServiceTypes" FromRole="AddonServiceTypes" ToRole="AddonServices" />
+        </EntityType>
+        <EntityType Name="CompanyProfile">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SmtpServer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="smtpPort" Type="Int32" />
+          <Property Name="SmtpEmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SmtpPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscriptionFeeToBeCharged" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DefaultEmailMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DBSSTaff">
+          <Key>
+            <PropertyRef Name="DBSStaffID" />
+          </Key>
+          <Property Name="DBSStaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IssueDate" Type="DateTime" Precision="0" />
+          <Property Name="DBSNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AddonServices" Relationship="Self.FK_AddonServices_DBSSTaff" FromRole="DBSSTaff" ToRole="AddonServices" />
+        </EntityType>
+        <EntityType Name="MemberAttendance">
+          <Key>
+            <PropertyRef Name="MemberAttendanceID" />
+          </Key>
+          <Property Name="MemberAttendanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="HasAttended" Type="Boolean" />
+          <Property Name="HasPaid" Type="Boolean" />
+          <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentRecievedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMethodID" Type="Int32" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="Narration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsFeeWaived" Type="Boolean" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_MemberAttendance_Members" FromRole="MemberAttendance" ToRole="Members" />
+          <NavigationProperty Name="Schedule" Relationship="Self.FK_MemberAttendance_Schedules" FromRole="MemberAttendance" ToRole="Schedules" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NationalityID" Type="Int32" />
+          <Property Name="DietaryRequirements" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="NextOfKin_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NextOfKin_Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NextOfKin_Postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NextOfKin_PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MemberTransportationID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TransportationOptionID" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AddonServices" Relationship="Self.FK_AddonServices_Members" FromRole="Members" ToRole="AddonServices" />
+          <NavigationProperty Name="MemberAttendances" Relationship="Self.FK_MemberAttendance_Members" FromRole="Members" ToRole="MemberAttendance" />
+          <NavigationProperty Name="MemberSubscriptionsPaids" Relationship="Self.FK_MemberSubscriptionsPaid_Members" FromRole="Members" ToRole="MemberSubscriptionsPaid" />
+        </EntityType>
+        <EntityType Name="MemberSubscriptionsPaid">
+          <Key>
+            <PropertyRef Name="MemberSubscriptionPaidID" />
+          </Key>
+          <Property Name="MemberSubscriptionPaidID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentRecievedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsOpen" Type="Boolean" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+          <Property Name="IsWaived" Type="Boolean" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_MemberSubscriptionsPaid_Members" FromRole="MemberSubscriptionsPaid" ToRole="Members" />
+        </EntityType>
+        <EntityType Name="Nationality">
+          <Key>
+            <PropertyRef Name="NationalityID" />
+          </Key>
+          <Property Name="NationalityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Decription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="NotificationID" />
+          </Key>
+          <Property Name="NotificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NotificationTypeID" Type="Int32" />
+          <Property Name="IsVisibility" Type="Boolean" />
+          <Property Name="NotificationYear" Type="Int32" />
+          <NavigationProperty Name="NotificationType" Relationship="Self.FK_Notifications_NotificationTypes" FromRole="Notifications" ToRole="NotificationTypes" />
+        </EntityType>
+        <EntityType Name="NotificationStaff">
+          <Key>
+            <PropertyRef Name="NotificationID" />
+          </Key>
+          <Property Name="NotificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="90" FixedLength="false" Unicode="true" />
+          <Property Name="IsDisplayed" Type="Boolean" />
+          <Property Name="IsCancelled" Type="Boolean" />
+          <Property Name="IsEmailNotification" Type="Boolean" />
+          <Property Name="IsDisplayOnScreenNotification" Type="Boolean" />
+          <Property Name="IsMobileTextNotification" Type="Boolean" />
+          <Property Name="DisplayedDate" Type="DateTime" Precision="3" />
+          <Property Name="CancelledDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="NotificationType">
+          <Key>
+            <PropertyRef Name="NotificationTypeID" />
+          </Key>
+          <Property Name="NotificationTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FK_Notifications_NotificationTypes" FromRole="NotificationTypes" ToRole="Notifications" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="PaymentMethodID" />
+          </Key>
+          <Property Name="PaymentMethodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PreScheduleFollowup">
+          <Key>
+            <PropertyRef Name="PreScheduleFollowupID" />
+          </Key>
+          <Property Name="PreScheduleFollowupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FollowupDoneBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="ScheduleID" Type="Int32" />
+          <NavigationProperty Name="PreScheduleFollowupDetails" Relationship="Self.FK_PreScheduleFollowupDetails_PreScheduleFollowup" FromRole="PreScheduleFollowup" ToRole="PreScheduleFollowupDetails" />
+        </EntityType>
+        <EntityType Name="PreScheduleFollowupDetail">
+          <Key>
+            <PropertyRef Name="PreScheduleFollowupDetailID" />
+          </Key>
+          <Property Name="PreScheduleFollowupDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransportArrangementStatusID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="RSVPStatusID" Type="Int32" />
+          <Property Name="PickOffTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="DropOffTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PreScheduleFollowupID" Type="Int32" />
+          <Property Name="IsTransportBooked" Type="Boolean" />
+          <NavigationProperty Name="PreScheduleFollowup" Relationship="Self.FK_PreScheduleFollowupDetails_PreScheduleFollowup" FromRole="PreScheduleFollowupDetails" ToRole="PreScheduleFollowup" />
+        </EntityType>
+        <EntityType Name="ProgrameTimeTemplate">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartTime" Type="Time" Precision="1" />
+          <Property Name="EndTime" Type="Time" Precision="1" />
+          <Property Name="Template" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RSVPStatu">
+          <Key>
+            <PropertyRef Name="RSVPStatusID" />
+          </Key>
+          <Property Name="RSVPStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ScheduleDetail">
+          <Key>
+            <PropertyRef Name="ScheduleDetailID" />
+          </Key>
+          <Property Name="ScheduleDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleID" Type="Int32" />
+          <Property Name="StartTime" Type="Time" Precision="7" />
+          <Property Name="EndTime" Type="Time" Precision="7" />
+          <NavigationProperty Name="Schedule" Relationship="Self.FK_ScheduleDetails_Schedules" FromRole="ScheduleDetails" ToRole="Schedules" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ScheduleID" />
+          </Key>
+          <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfEvent" Type="DateTime" Precision="0" />
+          <Property Name="MealsToBeServed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentExpected" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Team" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NotesNew" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MealsToBeServed_New" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MemberAttendances" Relationship="Self.FK_MemberAttendance_Schedules" FromRole="Schedules" ToRole="MemberAttendance" />
+          <NavigationProperty Name="ScheduleDetails" Relationship="Self.FK_ScheduleDetails_Schedules" FromRole="Schedules" ToRole="ScheduleDetails" />
+        </EntityType>
+        <EntityType Name="SubscriptionYear">
+          <Key>
+            <PropertyRef Name="SubscriptionYearID" />
+          </Key>
+          <Property Name="SubscriptionYearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="YearStartDate" Type="DateTime" Precision="0" />
+          <Property Name="YearEndDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TeamMember">
+          <Key>
+            <PropertyRef Name="TeamMemberID" />
+          </Key>
+          <Property Name="TeamMemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamMemberFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TeamMemberLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TransportArrangementStatu">
+          <Key>
+            <PropertyRef Name="TransportArrangementStatusID" />
+          </Key>
+          <Property Name="TransportArrangementStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TransportationOption">
+          <Key>
+            <PropertyRef Name="TransportationOptionID" />
+          </Key>
+          <Property Name="TransportationOptionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MustHaveMembershipID" Type="Boolean" />
+          <Property Name="NumberToCall" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwMemberAttendance">
+          <Key>
+            <PropertyRef Name="MemberAttendanceID" />
+            <PropertyRef Name="IsSubscriptionPaid" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemberAttendanceID" Type="Int32" Nullable="false" />
+          <Property Name="ScheduleID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="HasAttended" Type="Boolean" />
+          <Property Name="HasPaid" Type="Boolean" />
+          <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentRecievedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMethodID" Type="Int32" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="Narration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsFeeWaived" Type="Boolean" />
+          <Property Name="IsSubscriptionPaid" Type="Int32" Nullable="false" />
+          <Property Name="DateOfEvent" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="vwPreScheduleFollowup">
+          <Key>
+            <PropertyRef Name="MemberID" />
+            <PropertyRef Name="PreScheduleFollowupID" />
+            <PropertyRef Name="PreScheduleFollowupDetailID" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="PreScheduleFollowupID" Type="Int32" Nullable="false" />
+          <Property Name="RSVPStatusID" Type="Int32" />
+          <Property Name="PickOffTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="DropOffTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsTransportBooked" Type="Boolean" />
+          <Property Name="PreScheduleFollowupDetailID" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemberTransportationID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RSVPStatusDescription" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="TransportationOptionsDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleDateOfEvent" Type="DateTime" Precision="0" />
+          <Property Name="ScheduleID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vwScheduleAttendanceForReport">
+          <Key>
+            <PropertyRef Name="MemberID" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleID" Type="Int32" />
+          <Property Name="HasAttended" Type="Boolean" />
+          <Property Name="MemberID" Type="Int32" Nullable="false" />
+          <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="vwSubscriptionSummary">
+          <Key>
+            <PropertyRef Name="MemberAttendanceID" />
+            <PropertyRef Name="IsSubscriptionPaid" />
+          </Key>
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemberAttendanceID" Type="Int32" Nullable="false" />
+          <Property Name="ScheduleID" Type="Int32" />
+          <Property Name="MemberID" Type="Int32" />
+          <Property Name="HasAttended" Type="Boolean" />
+          <Property Name="HasPaid" Type="Boolean" />
+          <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaymentRecievedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMethodID" Type="Int32" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="Narration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsFeeWaived" Type="Boolean" />
+          <Property Name="IsSubscriptionPaid" Type="Int32" Nullable="false" />
+          <Property Name="SubscriptionAmountPaid" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DateOfEvent" Type="DateTime" Precision="0" />
+          <Property Name="Team" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="weeklyPayment" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="weeklyPaymentDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_AddonServices_AddonServiceTypes">
+          <End Role="AddonServiceTypes" Type="Self.AddonServiceType" Multiplicity="0..1" />
+          <End Role="AddonServices" Type="Self.AddonService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddonServiceTypes">
+              <PropertyRef Name="AddonServiceTypeId" />
+            </Principal>
+            <Dependent Role="AddonServices">
+              <PropertyRef Name="AddonServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddonServices_DBSSTaff">
+          <End Role="DBSSTaff" Type="Self.DBSSTaff" Multiplicity="0..1" />
+          <End Role="AddonServices" Type="Self.AddonService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DBSSTaff">
+              <PropertyRef Name="DBSStaffID" />
+            </Principal>
+            <Dependent Role="AddonServices">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AddonServices_Members">
+          <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="AddonServices" Type="Self.AddonService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="AddonServices">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberAttendance_Members">
+          <End Role="Members" Type="Self.Member" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberAttendance" Type="Self.MemberAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="MemberAttendance">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberAttendance_Schedules">
+          <End Role="Schedules" Type="Self.Schedule" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberAttendance" Type="Self.MemberAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedules">
+              <PropertyRef Name="ScheduleID" />
+            </Principal>
+            <Dependent Role="MemberAttendance">
+              <PropertyRef Name="ScheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberSubscriptionsPaid_Members">
+          <End Role="Members" Type="Self.Member" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MemberSubscriptionsPaid" Type="Self.MemberSubscriptionsPaid" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Members">
+              <PropertyRef Name="MemberID" />
+            </Principal>
+            <Dependent Role="MemberSubscriptionsPaid">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notifications_NotificationTypes">
+          <End Role="NotificationTypes" Type="Self.NotificationType" Multiplicity="0..1" />
+          <End Role="Notifications" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotificationTypes">
+              <PropertyRef Name="NotificationTypeID" />
+            </Principal>
+            <Dependent Role="Notifications">
+              <PropertyRef Name="NotificationTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PreScheduleFollowupDetails_PreScheduleFollowup">
+          <End Role="PreScheduleFollowup" Type="Self.PreScheduleFollowup" Multiplicity="0..1" />
+          <End Role="PreScheduleFollowupDetails" Type="Self.PreScheduleFollowupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreScheduleFollowup">
+              <PropertyRef Name="PreScheduleFollowupID" />
+            </Principal>
+            <Dependent Role="PreScheduleFollowupDetails">
+              <PropertyRef Name="PreScheduleFollowupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScheduleDetails_Schedules">
+          <End Role="Schedules" Type="Self.Schedule" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ScheduleDetails" Type="Self.ScheduleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedules">
+              <PropertyRef Name="ScheduleID" />
+            </Principal>
+            <Dependent Role="ScheduleDetails">
+              <PropertyRef Name="ScheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TopcareNetworkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AddonServices" EntityType="Self.AddonService" />
+          <EntitySet Name="AddonServiceTypes" EntityType="Self.AddonServiceType" />
+          <EntitySet Name="CompanyProfiles" EntityType="Self.CompanyProfile" />
+          <EntitySet Name="DBSSTaffs" EntityType="Self.DBSSTaff" />
+          <EntitySet Name="MemberAttendances" EntityType="Self.MemberAttendance" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="MemberSubscriptionsPaids" EntityType="Self.MemberSubscriptionsPaid" />
+          <EntitySet Name="Nationalities" EntityType="Self.Nationality" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="NotificationStaffs" EntityType="Self.NotificationStaff" />
+          <EntitySet Name="NotificationTypes" EntityType="Self.NotificationType" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+          <EntitySet Name="PreScheduleFollowups" EntityType="Self.PreScheduleFollowup" />
+          <EntitySet Name="PreScheduleFollowupDetails" EntityType="Self.PreScheduleFollowupDetail" />
+          <EntitySet Name="ProgrameTimeTemplates" EntityType="Self.ProgrameTimeTemplate" />
+          <EntitySet Name="RSVPStatus" EntityType="Self.RSVPStatu" />
+          <EntitySet Name="ScheduleDetails" EntityType="Self.ScheduleDetail" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <EntitySet Name="SubscriptionYears" EntityType="Self.SubscriptionYear" />
+          <EntitySet Name="TeamMembers" EntityType="Self.TeamMember" />
+          <EntitySet Name="TransportArrangementStatus" EntityType="Self.TransportArrangementStatu" />
+          <EntitySet Name="TransportationOptions" EntityType="Self.TransportationOption" />
+          <EntitySet Name="vwMemberAttendances" EntityType="Self.vwMemberAttendance" />
+          <EntitySet Name="vwPreScheduleFollowups" EntityType="Self.vwPreScheduleFollowup" />
+          <EntitySet Name="vwScheduleAttendanceForReports" EntityType="Self.vwScheduleAttendanceForReport" />
+          <EntitySet Name="vwSubscriptionSummaries" EntityType="Self.vwSubscriptionSummary" />
+          <AssociationSet Name="FK_AddonServices_AddonServiceTypes" Association="Self.FK_AddonServices_AddonServiceTypes">
+            <End Role="AddonServiceTypes" EntitySet="AddonServiceTypes" />
+            <End Role="AddonServices" EntitySet="AddonServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddonServices_DBSSTaff" Association="Self.FK_AddonServices_DBSSTaff">
+            <End Role="DBSSTaff" EntitySet="DBSSTaffs" />
+            <End Role="AddonServices" EntitySet="AddonServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AddonServices_Members" Association="Self.FK_AddonServices_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="AddonServices" EntitySet="AddonServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberAttendance_Members" Association="Self.FK_MemberAttendance_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="MemberAttendance" EntitySet="MemberAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberAttendance_Schedules" Association="Self.FK_MemberAttendance_Schedules">
+            <End Role="Schedules" EntitySet="Schedules" />
+            <End Role="MemberAttendance" EntitySet="MemberAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberSubscriptionsPaid_Members" Association="Self.FK_MemberSubscriptionsPaid_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="MemberSubscriptionsPaid" EntitySet="MemberSubscriptionsPaids" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notifications_NotificationTypes" Association="Self.FK_Notifications_NotificationTypes">
+            <End Role="NotificationTypes" EntitySet="NotificationTypes" />
+            <End Role="Notifications" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PreScheduleFollowupDetails_PreScheduleFollowup" Association="Self.FK_PreScheduleFollowupDetails_PreScheduleFollowup">
+            <End Role="PreScheduleFollowup" EntitySet="PreScheduleFollowups" />
+            <End Role="PreScheduleFollowupDetails" EntitySet="PreScheduleFollowupDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScheduleDetails_Schedules" Association="Self.FK_ScheduleDetails_Schedules">
+            <End Role="Schedules" EntitySet="Schedules" />
+            <End Role="ScheduleDetails" EntitySet="ScheduleDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TopcareNetworkModelStoreContainer" CdmEntityContainer="TopcareNetworkEntities">
+          <EntitySetMapping Name="AddonServices">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.AddonService">
+              <MappingFragment StoreEntitySet="AddonServices">
+                <ScalarProperty Name="AddonServiceID" ColumnName="AddonServiceID" />
+                <ScalarProperty Name="AddonServiceTypeId" ColumnName="AddonServiceTypeId" />
+                <ScalarProperty Name="ServiceDate" ColumnName="ServiceDate" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddonServiceTypes">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.AddonServiceType">
+              <MappingFragment StoreEntitySet="AddonServiceTypes">
+                <ScalarProperty Name="AddonServiceTypeId" ColumnName="AddonServiceTypeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyProfiles">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.CompanyProfile">
+              <MappingFragment StoreEntitySet="CompanyProfile">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="SmtpServer" ColumnName="SmtpServer" />
+                <ScalarProperty Name="smtpPort" ColumnName="smtpPort" />
+                <ScalarProperty Name="SmtpEmailAddress" ColumnName="SmtpEmailAddress" />
+                <ScalarProperty Name="SmtpPassword" ColumnName="SmtpPassword" />
+                <ScalarProperty Name="SubscriptionFeeToBeCharged" ColumnName="SubscriptionFeeToBeCharged" />
+                <ScalarProperty Name="DefaultEmailMessage" ColumnName="DefaultEmailMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DBSSTaffs">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.DBSSTaff">
+              <MappingFragment StoreEntitySet="DBSSTaff">
+                <ScalarProperty Name="DBSStaffID" ColumnName="DBSStaffID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="DBSNumber" ColumnName="DBSNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberAttendances">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.MemberAttendance">
+              <MappingFragment StoreEntitySet="MemberAttendance">
+                <ScalarProperty Name="MemberAttendanceID" ColumnName="MemberAttendanceID" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="HasAttended" ColumnName="HasAttended" />
+                <ScalarProperty Name="HasPaid" ColumnName="HasPaid" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="PaymentRecievedBy" ColumnName="PaymentRecievedBy" />
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="IsFeeWaived" ColumnName="IsFeeWaived" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Members">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.Member">
+              <MappingFragment StoreEntitySet="Members">
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Postcode" ColumnName="Postcode" />
+                <ScalarProperty Name="NationalityID" ColumnName="NationalityID" />
+                <ScalarProperty Name="DietaryRequirements" ColumnName="DietaryRequirements" />
+                <ScalarProperty Name="NextOfKin_Name" ColumnName="NextOfKin_Name" />
+                <ScalarProperty Name="NextOfKin_Address" ColumnName="NextOfKin_Address" />
+                <ScalarProperty Name="NextOfKin_Postcode" ColumnName="NextOfKin_Postcode" />
+                <ScalarProperty Name="NextOfKin_PhoneNumber" ColumnName="NextOfKin_PhoneNumber" />
+                <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+                <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+                <ScalarProperty Name="PhoneNumber3" ColumnName="PhoneNumber3" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MemberTransportationID" ColumnName="MemberTransportationID" />
+                <ScalarProperty Name="TransportationOptionID" ColumnName="TransportationOptionID" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberSubscriptionsPaids">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.MemberSubscriptionsPaid">
+              <MappingFragment StoreEntitySet="MemberSubscriptionsPaid">
+                <ScalarProperty Name="MemberSubscriptionPaidID" ColumnName="MemberSubscriptionPaidID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentRecievedBy" ColumnName="PaymentRecievedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsOpen" ColumnName="IsOpen" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="IsWaived" ColumnName="IsWaived" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nationalities">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.Nationality">
+              <MappingFragment StoreEntitySet="Nationalities">
+                <ScalarProperty Name="NationalityID" ColumnName="NationalityID" />
+                <ScalarProperty Name="Decription" ColumnName="Decription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.Notification">
+              <MappingFragment StoreEntitySet="Notifications">
+                <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+                <ScalarProperty Name="NotificationTypeID" ColumnName="NotificationTypeID" />
+                <ScalarProperty Name="IsVisibility" ColumnName="IsVisibility" />
+                <ScalarProperty Name="NotificationYear" ColumnName="NotificationYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationStaffs">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.NotificationStaff">
+              <MappingFragment StoreEntitySet="NotificationStaff">
+                <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsDisplayed" ColumnName="IsDisplayed" />
+                <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+                <ScalarProperty Name="IsEmailNotification" ColumnName="IsEmailNotification" />
+                <ScalarProperty Name="IsDisplayOnScreenNotification" ColumnName="IsDisplayOnScreenNotification" />
+                <ScalarProperty Name="IsMobileTextNotification" ColumnName="IsMobileTextNotification" />
+                <ScalarProperty Name="DisplayedDate" ColumnName="DisplayedDate" />
+                <ScalarProperty Name="CancelledDate" ColumnName="CancelledDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotificationTypes">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.NotificationType">
+              <MappingFragment StoreEntitySet="NotificationTypes">
+                <ScalarProperty Name="NotificationTypeID" ColumnName="NotificationTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethods">
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreScheduleFollowups">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.PreScheduleFollowup">
+              <MappingFragment StoreEntitySet="PreScheduleFollowup">
+                <ScalarProperty Name="PreScheduleFollowupID" ColumnName="PreScheduleFollowupID" />
+                <ScalarProperty Name="FollowupDoneBy" ColumnName="FollowupDoneBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreScheduleFollowupDetails">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.PreScheduleFollowupDetail">
+              <MappingFragment StoreEntitySet="PreScheduleFollowupDetails">
+                <ScalarProperty Name="PreScheduleFollowupDetailID" ColumnName="PreScheduleFollowupDetailID" />
+                <ScalarProperty Name="TransportArrangementStatusID" ColumnName="TransportArrangementStatusID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="RSVPStatusID" ColumnName="RSVPStatusID" />
+                <ScalarProperty Name="PickOffTime" ColumnName="PickOffTime" />
+                <ScalarProperty Name="DropOffTime" ColumnName="DropOffTime" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="PreScheduleFollowupID" ColumnName="PreScheduleFollowupID" />
+                <ScalarProperty Name="IsTransportBooked" ColumnName="IsTransportBooked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgrameTimeTemplates">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.ProgrameTimeTemplate">
+              <MappingFragment StoreEntitySet="ProgrameTimeTemplate">
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="Template" ColumnName="Template" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RSVPStatus">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.RSVPStatu">
+              <MappingFragment StoreEntitySet="RSVPStatus">
+                <ScalarProperty Name="RSVPStatusID" ColumnName="RSVPStatusID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScheduleDetails">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.ScheduleDetail">
+              <MappingFragment StoreEntitySet="ScheduleDetails">
+                <ScalarProperty Name="ScheduleDetailID" ColumnName="ScheduleDetailID" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedules">
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="DateOfEvent" ColumnName="DateOfEvent" />
+                <ScalarProperty Name="MealsToBeServed" ColumnName="MealsToBeServed" />
+                <ScalarProperty Name="ProgramTitle" ColumnName="ProgramTitle" />
+                <ScalarProperty Name="PaymentExpected" ColumnName="PaymentExpected" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="NotesNew" ColumnName="NotesNew" />
+                <ScalarProperty Name="MealsToBeServed_New" ColumnName="MealsToBeServed_New" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriptionYears">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.SubscriptionYear">
+              <MappingFragment StoreEntitySet="SubscriptionYears">
+                <ScalarProperty Name="SubscriptionYearID" ColumnName="SubscriptionYearID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="YearStartDate" ColumnName="YearStartDate" />
+                <ScalarProperty Name="YearEndDate" ColumnName="YearEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamMembers">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.TeamMember">
+              <MappingFragment StoreEntitySet="TeamMembers">
+                <ScalarProperty Name="TeamMemberID" ColumnName="TeamMemberID" />
+                <ScalarProperty Name="TeamMemberFirstName" ColumnName="TeamMemberFirstName" />
+                <ScalarProperty Name="TeamMemberLastName" ColumnName="TeamMemberLastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransportArrangementStatus">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.TransportArrangementStatu">
+              <MappingFragment StoreEntitySet="TransportArrangementStatus">
+                <ScalarProperty Name="TransportArrangementStatusID" ColumnName="TransportArrangementStatusID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransportationOptions">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.TransportationOption">
+              <MappingFragment StoreEntitySet="TransportationOptions">
+                <ScalarProperty Name="TransportationOptionID" ColumnName="TransportationOptionID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MustHaveMembershipID" ColumnName="MustHaveMembershipID" />
+                <ScalarProperty Name="NumberToCall" ColumnName="NumberToCall" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwMemberAttendances">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.vwMemberAttendance">
+              <MappingFragment StoreEntitySet="vwMemberAttendance">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MemberAttendanceID" ColumnName="MemberAttendanceID" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="HasAttended" ColumnName="HasAttended" />
+                <ScalarProperty Name="HasPaid" ColumnName="HasPaid" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="PaymentRecievedBy" ColumnName="PaymentRecievedBy" />
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="IsFeeWaived" ColumnName="IsFeeWaived" />
+                <ScalarProperty Name="IsSubscriptionPaid" ColumnName="IsSubscriptionPaid" />
+                <ScalarProperty Name="DateOfEvent" ColumnName="DateOfEvent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPreScheduleFollowups">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.vwPreScheduleFollowup">
+              <MappingFragment StoreEntitySet="vwPreScheduleFollowup">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="PreScheduleFollowupID" ColumnName="PreScheduleFollowupID" />
+                <ScalarProperty Name="RSVPStatusID" ColumnName="RSVPStatusID" />
+                <ScalarProperty Name="PickOffTime" ColumnName="PickOffTime" />
+                <ScalarProperty Name="DropOffTime" ColumnName="DropOffTime" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="IsTransportBooked" ColumnName="IsTransportBooked" />
+                <ScalarProperty Name="PreScheduleFollowupDetailID" ColumnName="PreScheduleFollowupDetailID" />
+                <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+                <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+                <ScalarProperty Name="PhoneNumber3" ColumnName="PhoneNumber3" />
+                <ScalarProperty Name="MemberTransportationID" ColumnName="MemberTransportationID" />
+                <ScalarProperty Name="RSVPStatusDescription" ColumnName="RSVPStatusDescription" />
+                <ScalarProperty Name="TransportationOptionsDescription" ColumnName="TransportationOptionsDescription" />
+                <ScalarProperty Name="ScheduleDateOfEvent" ColumnName="ScheduleDateOfEvent" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwScheduleAttendanceForReports">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.vwScheduleAttendanceForReport">
+              <MappingFragment StoreEntitySet="vwScheduleAttendanceForReport">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="HasAttended" ColumnName="HasAttended" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwSubscriptionSummaries">
+            <EntityTypeMapping TypeName="TopcareNetworkModel.vwSubscriptionSummary">
+              <MappingFragment StoreEntitySet="vwSubscriptionSummary">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MemberAttendanceID" ColumnName="MemberAttendanceID" />
+                <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="HasAttended" ColumnName="HasAttended" />
+                <ScalarProperty Name="HasPaid" ColumnName="HasPaid" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="PaymentRecievedBy" ColumnName="PaymentRecievedBy" />
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="IsFeeWaived" ColumnName="IsFeeWaived" />
+                <ScalarProperty Name="IsSubscriptionPaid" ColumnName="IsSubscriptionPaid" />
+                <ScalarProperty Name="SubscriptionAmountPaid" ColumnName="SubscriptionAmountPaid" />
+                <ScalarProperty Name="DateOfEvent" ColumnName="DateOfEvent" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+                <ScalarProperty Name="weeklyPayment" ColumnName="weeklyPayment" />
+                <ScalarProperty Name="weeklyPaymentDesc" ColumnName="weeklyPaymentDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
